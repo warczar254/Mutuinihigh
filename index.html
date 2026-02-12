@@ -3,141 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>School Love Wall</title>
+<title>Mutuini High School Valentines Wall</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, blue, pink, purple, maroon);
-  color: white;
-  text-align: center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-header {
-  padding: 30px 20px;
-  background: rgba(0,0,0,0.4);
+body{
+min-height:100vh;
+background:linear-gradient(-45deg,#0044ff,#ff4da6,#7b00ff,#800000,#00aa55);
+background-size:400% 400%;
+animation:gradientBG 12s ease infinite;
+overflow-x:hidden;
+color:white;
+text-align:center;
 }
 
-h1 {
-  margin: 0;
-  font-size: 2.2rem;
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
+header{
+padding:40px 20px;
 }
 
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  color: black;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+header h1{
+font-size:2.2rem;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+header p{
+margin-top:10px;
+opacity:0.9;
 }
 
-button {
-  padding: 12px;
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  background: linear-gradient(90deg, red, pink, purple);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+/* Glass card */
+.glass{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:25px;
+width:95%;
+max-width:800px;
+margin:20px auto;
+box-shadow:0 8px 30px rgba(0,0,0,0.3);
 }
 
-button:hover {
-  transform: scale(1.05);
+input,textarea{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:12px;
+outline:none;
+font-size:1rem;
 }
 
-#messages {
-  margin-top: 30px;
+button{
+margin-top:15px;
+padding:12px;
+width:100%;
+border:none;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(90deg,#ff0055,#ff66cc,#6600ff);
+color:white;
+transition:0.3s;
 }
 
-.msg {
-  background: white;
-  color: black;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 12px;
-  text-align: left;
-  animation: fadeIn 0.6s ease-in-out;
+button:hover{
+transform:scale(1.05);
 }
 
-.msg strong {
-  color: maroon;
+/* Message cards */
+.msg{
+background:white;
+color:#333;
+padding:15px;
+border-radius:15px;
+margin:15px auto;
+width:95%;
+max-width:800px;
+animation:fadeUp 0.5s ease;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
+.msg strong{
+color:#800000;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.6rem;
-  }
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(15px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Popup */
+#welcomePopup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popup-content{
+background:white;
+color:#333;
+padding:30px;
+border-radius:20px;
+max-width:400px;
+text-align:center;
+}
+
+.popup-content button{
+margin-top:15px;
+background:#ff4da6;
+}
+
+/* Flying hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+opacity:0.8;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0) scale(1);}
+100%{transform:translateY(-110vh) scale(1.5);}
+}
+
+/* Reaction burst */
+.reaction{
+position:fixed;
+font-size:24px;
+animation:burst 1s ease forwards;
+}
+
+@keyframes burst{
+0%{opacity:1;transform:scale(1);}
+100%{opacity:0;transform:translateY(-80px) scale(2);}
+}
+
+@media(max-width:600px){
+header h1{font-size:1.6rem;}
 }
 </style>
 </head>
+
 <body>
 
+<div id="welcomePopup">
+<div class="popup-content">
+<h2>Happy Valentine’s 💖</h2>
+<p>Welcome to the Mutuini High School Valentine Appreciation Wall. Share love, gratitude and positivity today.</p>
+<button onclick="closePopup()">Enter</button>
+</div>
+</div>
+
 <header>
-  <h1>💖 School Appreciation Wall 💖</h1>
-  <p>Write a beautiful message and let everyone see it.</p>
+<h1>Mutuini High School Valentine Wall 💐</h1>
+<p>Celebrating unity, leadership, friendship and dedication.</p>
 </header>
 
-<div class="container">
+<div class="glass">
 
-<form id="messageForm">
-  <input type="text" id="name" placeholder="Your Name" required>
-  <textarea id="message" placeholder="Write your message here..." required></textarea>
-  <button type="submit">Send Message</button>
-</form>
+<h3>🌹 Special Valentine Message 🌹</h3>
+<p style="margin-top:15px; line-height:1.6;">
 
-<div id="messages"></div>
+<strong>To Our Principal:</strong><br>
+On this beautiful Valentine’s season, we celebrate your visionary leadership, your strength, your wisdom and the calm guidance you provide to Mutuini High School. Your commitment shapes our future, inspires excellence, and builds a culture of discipline and care. We deeply appreciate your dedication and the passion you show in guiding this institution forward. May this season remind you that your leadership is valued and respected by the entire school community.
+
+<br><br>
+
+<strong>To Our Teachers:</strong><br>
+Thank you for your patience, knowledge, and tireless effort. You nurture minds, encourage dreams, and shape destinies. Your impact extends beyond the classroom and into the lives of every student you teach.
+
+<br><br>
+
+<strong>To Our Non-Teaching Staff:</strong><br>
+Your silent strength keeps everything running smoothly. Your hard work, organization and commitment are appreciated more than words can express.
+
+<br><br>
+
+<strong>To Our Students:</strong><br>
+You are the heartbeat of Mutuini High School. Continue to uplift one another, support each other, and grow into responsible leaders of tomorrow.
+
+</p>
 
 </div>
 
-<!-- Firebase Script -->
+<div class="glass">
+<form id="messageForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<textarea id="message" placeholder="Write your Valentine message..." required></textarea>
+<button type="submit">Send Love 💌</button>
+</form>
+</div>
+
+<div id="messages"></div>
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { 
-  getFirestore, 
-  collection, 
-  addDoc, 
-  onSnapshot,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy }
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* 🔴 REPLACE THIS WITH YOUR OWN FIREBASE CONFIG */
+/* Replace with your Firebase config */
 const firebaseConfig = {
-  apiKey: "AIzaSyBhU6IxXpSSkOAvpy4qWqZW_3yOHEhbBuU",
-  authDomain: "mutuini-valentines-web-app.firebaseapp.com",
-  projectId: "mutuini-valentines-web-app",
-  storageBucket: "mutuini-valentines-web-app.firebasestorage.app",
-  messagingSenderId: "673231939960",
-  appId: "1:673231939960:web:db43d899971ee12495008d"
+apiKey: "YOUR_API_KEY",
+authDomain: "YOUR_PROJECT.firebaseapp.com",
+projectId: "YOUR_PROJECT_ID",
+storageBucket: "YOUR_PROJECT.appspot.com",
+messagingSenderId: "YOUR_ID",
+appId: "YOUR_APP_ID"
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -145,197 +238,66 @@ const db = getFirestore(app);
 const form = document.getElementById("messageForm");
 const messagesDiv = document.getElementById("messages");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+form.addEventListener("submit", async (e)=>{
+e.preventDefault();
+const name=document.getElementById("name").value.trim();
+const message=document.getElementById("message").value.trim();
 
-  const name = document.getElementById("name").value;
-  const message = document.getElementById("message").value;
-
-  await addDoc(collection(db, "messages"), {
-    name: name,
-    message: message,
-    createdAt: new Date()
-  });
-
-  form.reset();
+if(name && message){
+await addDoc(collection(db,"messages"),{
+name,
+message,
+createdAt:new Date()
+});
+form.reset();
+reactionBurst();
+}
 });
 
-/* Real-time updates */
-const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+const q=query(collection(db,"messages"),orderBy("createdAt","desc"));
 
-onSnapshot(q, (snapshot) => {
-  messagesDiv.innerHTML = "";
-  snapshot.forEach((doc) => {
-    const data = doc.data();
-    messagesDiv.innerHTML += `
-      <div class="msg">
-        <strong>${data.name}</strong>
-        <p>${data.message}</p>
-      </div>
-    `;
-  });
+onSnapshot(q,(snapshot)=>{
+messagesDiv.innerHTML="";
+snapshot.forEach(doc=>{
+const data=doc.data();
+messagesDiv.innerHTML+=`
+<div class="msg">
+<strong>${data.name}</strong>
+<p>${data.message}</p>
+</div>
+`;
 });
+});
+
+/* Popup */
+window.closePopup=function(){
+document.getElementById("welcomePopup").style.display="none";
+};
+
+/* Flying hearts */
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.style.left=Math.random()*100+"vw";
+heart.innerHTML="💖";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},800);
+
+/* Reaction burst */
+function reactionBurst(){
+for(let i=0;i<6;i++){
+const react=document.createElement("div");
+react.className="reaction";
+react.style.left=(50+Math.random()*20-10)+"vw";
+react.style.top=(60+Math.random()*20-10)+"vh";
+react.innerHTML="💐";
+document.body.appendChild(react);
+setTimeout(()=>react.remove(),1000);
+}
+}
 
 </script>
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mutuini High School Valentine 2026</title>
-<link rel="stylesheet" href="style.css">
-</head><script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "YOUR-KEY",
-    authDomain: "YOUR-DOMAIN",
-    projectId: "YOUR-PROJECT-ID",
-    storageBucket: "YOUR-BUCKET",
-    messagingSenderId: "YOUR-ID",
-    appId: "YOUR-APP-ID"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  const form = document.getElementById("messageForm");
-  const messagesDiv = document.getElementById("messages");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = form.name.value;
-    const message = form.message.value;
-
-    await addDoc(collection(db, "messages"), {
-      name,
-      message
-    });
-
-    form.reset();
-    loadMessages();
-  });
-
-  async function loadMessages() {
-    messagesDiv.innerHTML = "";
-    const querySnapshot = await getDocs(collection(db, "messages"));
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      messagesDiv.innerHTML += `
-        <div class="msg">
-          <strong>${data.name}</strong>
-          <p>${data.message}</p>
-        </div>
-      `;
-    });
-  }
-
-  loadMessages();
-</script>
-
-<body><form id="messageForm">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <textarea name="message" placeholder="Write your message..." required></textarea>
-  <button type="submit">Send Message</button>
-</form>
-
-<div id="messages"></div>
-
-
-<div class="floating-hearts"></div>
-
-<header class="hero">
-    <h1 id="typewriter"></h1>
-    <p>Celebrating Unity • Respect • Love 💖</p>
-    <button class="primary-btn" onclick="launchHearts()">Celebrate Love</button>
-</header>
-
-<section class="principal">
-    <h2>🌟 A Special Tribute to Our Principal 🌟</h2>
-    <div class="principal-card">
-        <p>
-        Dear Principal,
-
-        Your leadership is the foundation upon which Mutuini High School stands strong.
-        Your wisdom shapes futures, your discipline builds character, and your compassion
-        inspires confidence. Through your vision, this school continues to grow in excellence,
-        unity, and purpose.
-
-        Thank you for your dedication, resilience, and unwavering commitment.
-        Today we celebrate not only Valentine’s Day — but the powerful leadership
-        that guides us forward every single day.
-
-        With respect and appreciation,
-        The Mutuini High School Community ❤️
-        </p>
-    </div>
-</section>
-
-<section class="appreciation">
-    <h2>💌 Appreciation Messages</h2>
-
-    <div class="glass-card" onclick="toggle(this)">
-        <h3>Students 💕</h3>
-        <p class="hidden">
-        You are the heartbeat of this school. Your dreams, your determination,
-        your energy, and your ambition make Mutuini proud.
-        Keep believing in your greatness — you are capable of amazing things.
-        </p>
-    </div>
-
-    <div class="glass-card" onclick="toggle(this)">
-        <h3>Teachers 🌹</h3>
-        <p class="hidden">
-        Your patience builds confidence. Your guidance creates leaders.
-        Your dedication shapes tomorrow. Thank you for investing your time,
-        wisdom, and heart into every learner.
-        </p>
-    </div>
-
-    <div class="glass-card" onclick="toggle(this)">
-        <h3>Non-Teaching Staff 🌸</h3>
-        <p class="hidden">
-        Your hard work keeps everything running smoothly.
-        From administration to support services,
-        your commitment ensures excellence.
-        You are valued more than words can express.
-        </p>
-    </div>
-
-</section>
-
-<section class="compliment">
-    <h2>Tap for a Sweet Message 💖</h2>
-    <button class="primary-btn" onclick="generate()">Get Message</button>
-    <p id="messageDisplay"></p>
-</section>
-
-<section class="wall">
-    <h2>Leave a Kind Note 📝</h2>
-    <input type="text" id="name" placeholder="Your Name">
-    <textarea id="note" placeholder="Write something kind..."></textarea>
-    <button class="primary-btn" onclick="postNote()">Post</button>
-    <div id="notes"></div>
-</section>
-
-<footer>
-    Mutuini High School — Valentine 2026 ❤️
-</footer>
-
-<script src="script.js"></script><!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
-
-<script src="script.js"></script>
-
-</body>
-</html>
-
-
-
-
-
