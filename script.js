@@ -1,86 +1,62 @@
-// TYPEWRITER GREETING
-const typewriterText = "💖 Happy Valentine’s Day 2026 💖";
-let i = 0;
-function typeWriter() {
-    if(i < typewriterText.length){
-        document.getElementById("typewriter").innerHTML += typewriterText.charAt(i);
+// TYPEWRITER
+const messages = ["💖 Happy Valentine’s Day 2026 💖","Spread Love & Kindness ❤️","Mutuini High School Celebrates You! 🌸"];
+let i=0, j=0;
+function typeWriter(){
+    const el = document.getElementById("typewriter");
+    if(i<messages[j].length){
+        el.innerHTML+=messages[j].charAt(i);
         i++;
-        setTimeout(typeWriter, 100);
+        setTimeout(typeWriter,80);
+    }else{
+        setTimeout(()=>{
+            el.innerHTML="";
+            i=0;
+            j=(j+1)%messages.length;
+            typeWriter();
+        },2000);
     }
 }
 typeWriter();
 
 // APPRECIATION MESSAGES
-const appreciationMessages = {
-    students: `
-        <span class="color-pink">Dear Students,</span>
-        <span class="color-blue">Your energy, curiosity, and laughter light up Mutuini High School.</span>
-        <span class="color-purple">Keep chasing your dreams and spreading kindness wherever you go.</span>
-        <span class="color-red">You make every day brighter and fill our halls with joy!</span>
-    `,
-    teachers: `
-        <span class="color-maroon">Dear Teachers,</span>
-        <span class="color-green">Your dedication and patience shape the hearts and minds of our students.</span>
-        <span class="color-pink">Your guidance inspires hope, ambition, and courage in everyone around you.</span>
-        <span class="color-blue">Thank you for being our pillars and mentors, always lighting the way with love and wisdom.</span>
-    `,
-    staff: `
-        <span class="color-purple">Dear Non-Teaching Staff,</span>
-        <span class="color-red">Your hard work, care, and dedication make Mutuini High School a safe and welcoming home for everyone.</span>
-        <span class="color-white">From the library to the kitchen, every corner feels brighter because of your effort and heart.</span>
-        <span class="color-green">We appreciate you today and always!</span>
-    `
+const appreciation = {
+    students:"<span>Dear Students,</span><span>Your energy and curiosity light up the school...</span>",
+    teachers:"<span>Dear Teachers,</span><span>Your guidance inspires hope...</span>",
+    staff:"<span>Dear Staff,</span><span>Your dedication makes everything brighter...</span>"
 };
 
 function showAppreciation(type){
-    document.getElementById("appreciationText").innerHTML = `<div class="appreciation-text">${appreciationMessages[type]}</div>`;
+    document.getElementById(type+"Msg").innerHTML=appreciation[type];
 }
 
-// COMPLIMENT GENERATOR
-const compliments = [
-    "You brighten the day of everyone around you! 🌟",
-    "Your smile can light up the whole school! 😄",
-    "Keep spreading love and kindness! 💖",
-    "You are amazing just the way you are! 💌",
-    "Your presence makes everything better! 🌸"
-];
-
+// COMPLIMENTS
+const compliments = ["You brighten the day! 🌟","Keep spreading love! 💖","You are amazing! 💌"];
 function generateCompliment(){
-    const rand = compliments[Math.floor(Math.random()*compliments.length)];
-    document.getElementById("compliment").innerText = rand;
+    const rand=compliments[Math.floor(Math.random()*compliments.length)];
+    const el=document.getElementById("compliment");
+    el.innerText=rand;
     launchConfetti();
 }
 
 // MESSAGE WALL
 function addMessage(){
-    const name = document.getElementById("name").value || "Anonymous";
-    const note = document.getElementById("note").value;
-    if(note.trim() === "") return;
-    const div = document.createElement("div");
-    div.className = "note";
-    div.innerHTML = `<strong>${name}:</strong> ${note}`;
+    const name=document.getElementById("name").value||"Anonymous";
+    const note=document.getElementById("note").value;
+    if(note.trim()==="") return;
+    const div=document.createElement("div");
+    div.className="note";
+    div.innerHTML=`<strong>${name}:</strong> ${note}`;
     document.getElementById("messages").appendChild(div);
-    document.getElementById("name").value = "";
-    document.getElementById("note").value = "";
+    document.getElementById("name").value="";
+    document.getElementById("note").value="";
     launchConfetti();
 }
 
-// FLOATING HEARTS
-function createHeart(){
-    const heart = document.createElement("span");
-    heart.innerText = "💖";
-    heart.style.left = Math.random()*window.innerWidth+"px";
-    heart.style.fontSize = (15 + Math.random()*20)+"px";
-    document.querySelector(".floating-hearts").appendChild(heart);
-    setTimeout(()=>heart.remove(), 10000);
-}
-setInterval(createHeart, 800);
-
-// CONFETTI (simple)
+// CONFETTI
 function launchConfetti(){
     for(let i=0;i<30;i++){
-        const c = document.createElement("span");
-        c.innerText = "🎉";
+        const c=document.createElement("span");
+        c.innerText="🎉";
         c.style.position="absolute";
         c.style.left=Math.random()*window.innerWidth+"px";
         c.style.top=Math.random()*window.innerHeight+"px";
@@ -89,3 +65,15 @@ function launchConfetti(){
         setTimeout(()=>c.remove(),2000);
     }
 }
+
+// FLOATING PARTICLES ON CLICK
+document.body.addEventListener("click",e=>{
+    const heart=document.createElement("span");
+    heart.innerText="💖";
+    heart.style.position="absolute";
+    heart.style.left=e.clientX+"px";
+    heart.style.top=e.clientY+"px";
+    heart.style.fontSize="20px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),1000);
+});
