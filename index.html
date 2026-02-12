@@ -2,60 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mutuini High School Valentine's Celebration</title>
+    <title>Mutuini High School Valentine 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="hearts"></div>
+<div class="floating-hearts"></div>
 
 <header class="hero">
     <img src="logo.png" class="logo">
-    <h1>💖 Valentine's Celebration 2026 💖</h1>
-    <h2>Mutuini High School Family</h2>
-    <div id="countdown"></div>
-    <button onclick="scrollToMessage()">Enter Celebration</button>
+    <h1>💖 Happy Valentine’s Day 2026 💖</h1>
+    <h2>From All of Us at Mutuini High School</h2>
+    <div id="mainMessage"></div>
+    <button class="celebrate-btn" onclick="launchConfetti()">Celebrate! 🎉</button>
 </header>
 
-<section class="message" id="mainMessage">
-    <h2 id="typewriter"></h2>
-</section>
-
 <section class="appreciation">
-    <h2>Choose Who To Appreciate</h2>
-    <button onclick="showAppreciation('students')">Students</button>
-    <button onclick="showAppreciation('teachers')">Teachers</button>
-    <button onclick="showAppreciation('staff')">Non-Teaching Staff</button>
+    <h2>Show Some Love</h2>
+    <div class="cards">
+        <div class="card" onclick="showAppreciation('students')">Students</div>
+        <div class="card" onclick="showAppreciation('teachers')">Teachers</div>
+        <div class="card" onclick="showAppreciation('staff')">Non-Teaching Staff</div>
+    </div>
     <p id="appreciationText"></p>
 </section>
 
-<section class="interaction">
-    <h2>Spread Kindness</h2>
-    <button onclick="generateCompliment()">Get a Kind Message</button>
+<section class="compliment">
+    <button onclick="generateCompliment()">Get a Sweet Message 💌</button>
     <p id="compliment"></p>
-    <button onclick="launchConfetti()">Celebrate 🎉</button>
 </section>
 
 <section class="gallery">
     <h2>School Memories</h2>
     <div class="gallery-grid">
-        <img src="photo1.jpg">
-        <img src="photo2.jpg">
-        <img src="photo3.jpg">
+        <img src="photo1.jpg" alt="Memory 1">
+        <img src="photo2.jpg" alt="Memory 2">
+        <img src="photo3.jpg" alt="Memory 3">
     </div>
 </section>
 
 <section class="wall">
     <h2>Leave a Kind Message</h2>
     <input type="text" id="name" placeholder="Your Name">
-    <textarea id="note" placeholder="Write something kind..."></textarea>
-    <button onclick="addMessage()">Post Message</button>
+    <textarea id="note" placeholder="Write something sweet..."></textarea>
+    <button onclick="addMessage()">Post Message 💖</button>
     <div id="messages"></div>
 </section>
 
 <footer>
-    <p>Mutuini High School — Built on Unity & Excellence</p>
+    <p>Mutuini High School — Unity, Respect, and Love</p>
+    <button onclick="document.getElementById('bgMusic').play()">Play Music 🎵</button>
 </footer>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
 </body>
