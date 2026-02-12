@@ -1,103 +1,188 @@
-// Countdown
-const countdown = document.getElementById("countdown");
-const valentines = new Date("February 14, 2026 00:00:00").getTime();
-
-setInterval(() => {
-    const now = new Date().getTime();
-    const distance = valentines - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    countdown.innerHTML = days + " Days Until Valentine's Day";
-}, 1000);
-
-// Typewriter
-const text = "Today we celebrate respect, unity, appreciation, and the powerful bond that makes Mutuini High School a true family.";
-let i = 0;
-function typeWriter() {
-    if (i < text.length) {
-        document.getElementById("typewriter").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 40);
-    }
-}
-typeWriter();
-
-// Appreciation categories
-function showAppreciation(group) {
-    const textBox = document.getElementById("appreciationText");
-
-    const messages = {
-        students: "To our students — your ambition and energy drive the future.",
-        teachers: "To our teachers — your wisdom and patience create tomorrow's leaders.",
-        staff: "To our non-teaching staff — your dedication ensures excellence behind the scenes."
-    };
-
-    textBox.innerHTML = messages[group];
+/* --------------------------- */
+/*   COLORS & VARIABLES       */
+/* --------------------------- */
+:root {
+    --deep-purple: #8A2BE2;
+    --soft-pink: #FF6EC7;
+    --light-blue: #87CEFA;
+    --gold: #FFD700;
+    --cream: #FFF8E7;
+    --text-dark: #2E2E2E;
 }
 
-// Compliments
-const compliments = [
-    "Your kindness strengthens our school community.",
-    "You matter more than you know.",
-    "Your effort creates impact every day.",
-    "You inspire greatness.",
-    "Mutuini High is better because of you."
-];
-
-function generateCompliment() {
-    const random = compliments[Math.floor(Math.random() * compliments.length)];
-    document.getElementById("compliment").innerText = random;
+/* --------------------------- */
+/*         BODY               */
+/* --------------------------- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--soft-pink), var(--light-blue), var(--deep-purple), var(--gold));
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    color: var(--text-dark);
+    text-align: center;
+    overflow-x: hidden;
 }
 
-// Message wall with storage
-function addMessage() {
-    const name = document.getElementById("name").value;
-    const note = document.getElementById("note").value;
-    if (!name || !note) return;
-
-    const message = { name, note };
-    let messages = JSON.parse(localStorage.getItem("messages")) || [];
-    messages.push(message);
-    localStorage.setItem("messages", JSON.stringify(messages));
-
-    displayMessages();
-    document.getElementById("name").value = "";
-    document.getElementById("note").value = "";
+/* --------------------------- */
+/*        HEADER / HERO       */
+/* --------------------------- */
+header.hero {
+    padding: 80px 20px;
+    color: white;
+    position: relative;
+}
+header.hero .logo {
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+header h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px #00000055;
+}
+header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+button.celebrate-btn {
+    background: var(--gold);
+    color: var(--text-dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button.celebrate-btn:hover {
+    transform: scale(1.1);
 }
 
-function displayMessages() {
-    const messagesDiv = document.getElementById("messages");
-    messagesDiv.innerHTML = "";
-    const messages = JSON.parse(localStorage.getItem("messages")) || [];
-    messages.forEach(msg => {
-        const div = document.createElement("div");
-        div.classList.add("note");
-        div.innerHTML = `<strong>${msg.name}:</strong> ${msg.note}`;
-        messagesDiv.appendChild(div);
-    });
+/* --------------------------- */
+/*          SECTIONS          */
+/* --------------------------- */
+section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
 }
-displayMessages();
-
-// Confetti
-function launchConfetti() {
-    for (let i = 0; i < 80; i++) {
-        const confetti = document.createElement("div");
-        confetti.style.position = "fixed";
-        confetti.style.width = "8px";
-        confetti.style.height = "8px";
-        confetti.style.backgroundColor = "hsl(" + Math.random()*360 + ", 100%, 50%)";
-        confetti.style.top = "-10px";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.animation = "fall 3s linear forwards";
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 3000);
-    }
+.main-message h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
-// Falling animation
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes fall {
-    to { transform: translateY(100vh); opacity: 0; }
-}`;
-document.head.appendChild(style);
+/* --------------------------- */
+/*      APPRECIATION CARDS    */
+/* --------------------------- */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+.card {
+    background: rgba(255,255,255,0.8);
+    padding: 30px;
+    border-radius: 20px;
+    width: 200px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.card:hover {
+    transform: scale(1.1) rotate(2deg);
+    background: var(--soft-pink);
+    color: white;
+}
+.card:active {
+    transform: scale(0.95) rotate(-1deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* --------------------------- */
+/*      COMPLIMENT BUTTON      */
+/* --------------------------- */
+.compliment button {
+    background: var(--deep-purple);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.compliment button:hover {
+    background: var(--gold);
+    color: var(--text-dark);
+}
+.compliment button:active {
+    transform: scale(0.95);
+}
+
+/* --------------------------- */
+/*         GALLERY            */
+/* --------------------------- */
+.gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.gallery-grid img {
+    width: 200px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.gallery-grid img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* --------------------------- */
+/*        MESSAGE WALL         */
+/* --------------------------- */
+.wall input, .wall textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: none;
+    font-size: 1rem;
+}
+.wall button {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    background: var(--deep-purple);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.wall button:hover {
+    background: var(--gold);
+    color: var(--text-dark);
+}
+.wall button:active {
+    transform: scale(0.95);
+}
+.note {
+    background: rgba(255,255,255,0.7);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* --------------------------- */
+/*           FOOTER            */
+/* --------------------------- */
+footer {
+    background: #2E2E2E;
+    color: white;
+    padding: 20p
