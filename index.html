@@ -1,63 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mutuini High School Valentine 2026</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* --------------------------- */
+/* COLORS & VARIABLES         */
+/* --------------------------- */
+:root {
+    --candy-pink: #FF6EB4;
+    --lavender: #B497BD;
+    --peach: #FFD1BA;
+    --soft-coral: #FF8C94;
+    --gold: #FFD700;
+    --text-dark: #2E2E2E;
+}
 
-<div class="floating-hearts"></div>
+/* --------------------------- */
+/* BODY                        */
+/* --------------------------- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--candy-pink), var(--lavender), var(--peach));
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: var(--text-dark);
+    text-align: center;
+    overflow-x: hidden;
+}
 
-<header class="hero">
-    <img src="logo.png" class="logo">
-    <h1>💖 Happy Valentine’s Day 2026 💖</h1>
-    <h2>From All of Us at Mutuini High School</h2>
-    <div id="mainMessage"></div>
-    <button class="celebrate-btn" onclick="launchConfetti()">Celebrate! 🎉</button>
-</header>
+/* --------------------------- */
+/* HEADER / HERO               */
+/* --------------------------- */
+header.hero {
+    padding: 80px 20px;
+    color: white;
+    position: relative;
+}
+header.hero .logo {
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+header h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px #00000055;
+}
+header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+button.celebrate-btn {
+    background: var(--gold);
+    color: var(--text-dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button.celebrate-btn:hover {
+    transform: scale(1.1);
+}
+button.celebrate-btn:active {
+    transform: scale(0.95);
+}
 
-<section class="appreciation">
-    <h2>Show Some Love</h2>
-    <div class="cards">
-        <div class="card" onclick="showAppreciation('students')">Students</div>
-        <div class="card" onclick="showAppreciation('teachers')">Teachers</div>
-        <div class="card" onclick="showAppreciation('staff')">Non-Teaching Staff</div>
-    </div>
-    <p id="appreciationText"></p>
-</section>
+/* --------------------------- */
+/* SECTIONS                    */
+/* --------------------------- */
+section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+.main-message h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
 
-<section class="compliment">
-    <button onclick="generateCompliment()">Get a Sweet Message 💌</button>
-    <p id="compliment"></p>
-</section>
+/* --------------------------- */
+/* APPRECIATION CARDS          */
+/* --------------------------- */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+.card {
+    background: rgba(255,255,255,0.8);
+    padding: 30px;
+    border-radius: 20px;
+    width: 200px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.card:hover {
+    transform: scale(1.1) rotate(2deg);
+    background: var(--soft-coral);
+    color: white;
+}
+.card:active {
+    transform: scale(0.95) rotate(-1deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-<section class="gallery">
-    <h2>School Memories</h2>
-    <div class="gallery-grid">
-        <img src="photo1.jpg" alt="Memory 1">
-        <img src="photo2.jpg" alt="Memory 2">
-        <img src="photo3.jpg" alt="Memory 3">
-    </div>
-</section>
+/* --------------------------- */
+/* COMPLIMENT BUTTON           */
+/* --------------------------- */
+.compliment button {
+    background: var(--candy-pink);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.compliment button:hover {
+    background: var(--gold);
+    color: var(--text-dark);
+}
+.compliment button:active {
+    transform: scale(0.95);
+}
 
-<section class="wall">
-    <h2>Leave a Kind Message</h2>
-    <input type="text" id="name" placeholder="Your Name">
-    <textarea id="note" placeholder="Write something sweet..."></textarea>
-    <button onclick="addMessage()">Post Message 💖</button>
-    <div id="messages"></div>
-</section>
+/* --------------------------- */
+/* GALLERY                     */
+/* --------------------------- */
+.gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.gallery-grid img {
+    width: 200px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.gallery-grid img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
 
-<footer>
-    <p>Mutuini High School — Unity, Respect, and Love</p>
-    <button onclick="document.getElementById('bgMusic').play()">Play Music 🎵</button>
-</footer>
+/* --------------------------- */
+/* MESSAGE WALL                */
+/* --------------------------- */
+.wall input, .wall textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: none;
+    font-size: 1rem;
+}
+.wall button {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    background: var(--lavender);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.wall button:hover {
+    background: var(--gold);
+    color: var(--text-dark);
+}
+.wall button:active {
+    transform: scale(0.95);
+}
+.note {
+    background: rgba(255,255,255,0.7);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
 
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
+/* --------------------------- */
+/* FOOTER                      */
+/* --------------------------- */
+footer {
+    background: #2E2E2E;
+    color: white;
+    padding: 20px;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+/* --------------------------- */
+/* FLOATING HEARTS             */
+/* --------------------------- */
+.floating-hearts span {
+    position: absolute;
+    bottom: -50px;
+    font-size: clamp(15px, 3vw, 30px);
+    animation: float 10s linear infinite;
+}
+
+/* --------------------------- */
+/* ANIMATIONS                  */
+/* --------------------------- */
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+@keyframes float {
+    to { transform: translateY(-110vh); }
+}
+
+/* --------------------------- */
+/* RESPONSIVE                  */
+/* --------------------------- */
+@media (max-width: 768px) {
+    header.hero h1 {
+        font-size: 2rem;
+    }
+    header.hero h2 {
+        font-size: 1.2rem;
+    }
+    .cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .gallery-grid img {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+    .wall input, .wall textarea {
+        width: 95%;
+    }
+    button, .celebrate-btn {
+        width: 90%;
+        padding: 12px;
+    }
+}
