@@ -1,31 +1,31 @@
 /* --------------------------- */
-/*   COLORS & VARIABLES       */
+/* COLORS & VARIABLES         */
 /* --------------------------- */
 :root {
-    --deep-purple: #8A2BE2;
-    --soft-pink: #FF6EC7;
-    --light-blue: #87CEFA;
+    --candy-pink: #FF6EB4;
+    --lavender: #B497BD;
+    --peach: #FFD1BA;
+    --soft-coral: #FF8C94;
     --gold: #FFD700;
-    --cream: #FFF8E7;
     --text-dark: #2E2E2E;
 }
 
 /* --------------------------- */
-/*         BODY               */
+/* BODY                        */
 /* --------------------------- */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--soft-pink), var(--light-blue), var(--deep-purple), var(--gold));
+    background: linear-gradient(135deg, var(--candy-pink), var(--lavender), var(--peach));
     background-size: 400% 400%;
-    animation: gradientMove 12s ease infinite;
+    animation: gradientMove 15s ease infinite;
     color: var(--text-dark);
     text-align: center;
     overflow-x: hidden;
 }
 
 /* --------------------------- */
-/*        HEADER / HERO       */
+/* HEADER / HERO               */
 /* --------------------------- */
 header.hero {
     padding: 80px 20px;
@@ -58,9 +58,12 @@ button.celebrate-btn {
 button.celebrate-btn:hover {
     transform: scale(1.1);
 }
+button.celebrate-btn:active {
+    transform: scale(0.95);
+}
 
 /* --------------------------- */
-/*          SECTIONS          */
+/* SECTIONS                    */
 /* --------------------------- */
 section {
     padding: 60px 20px;
@@ -73,7 +76,7 @@ section {
 }
 
 /* --------------------------- */
-/*      APPRECIATION CARDS    */
+/* APPRECIATION CARDS          */
 /* --------------------------- */
 .cards {
     display: flex;
@@ -89,12 +92,12 @@ section {
     width: 200px;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 .card:hover {
     transform: scale(1.1) rotate(2deg);
-    background: var(--soft-pink);
+    background: var(--soft-coral);
     color: white;
 }
 .card:active {
@@ -103,10 +106,10 @@ section {
 }
 
 /* --------------------------- */
-/*      COMPLIMENT BUTTON      */
+/* COMPLIMENT BUTTON           */
 /* --------------------------- */
 .compliment button {
-    background: var(--deep-purple);
+    background: var(--candy-pink);
     color: white;
     border: none;
     padding: 10px 25px;
@@ -124,7 +127,7 @@ section {
 }
 
 /* --------------------------- */
-/*         GALLERY            */
+/* GALLERY                     */
 /* --------------------------- */
 .gallery-grid {
     display: flex;
@@ -144,7 +147,7 @@ section {
 }
 
 /* --------------------------- */
-/*        MESSAGE WALL         */
+/* MESSAGE WALL                */
 /* --------------------------- */
 .wall input, .wall textarea {
     width: 90%;
@@ -158,7 +161,7 @@ section {
     padding: 10px 25px;
     border-radius: 25px;
     border: none;
-    background: var(--deep-purple);
+    background: var(--lavender);
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -180,9 +183,59 @@ section {
 }
 
 /* --------------------------- */
-/*           FOOTER            */
+/* FOOTER                      */
 /* --------------------------- */
 footer {
     background: #2E2E2E;
     color: white;
-    padding: 20p
+    padding: 20px;
+}
+
+/* --------------------------- */
+/* FLOATING HEARTS             */
+/* --------------------------- */
+.floating-hearts span {
+    position: absolute;
+    bottom: -50px;
+    font-size: clamp(15px, 3vw, 30px);
+    animation: float 10s linear infinite;
+}
+
+/* --------------------------- */
+/* ANIMATIONS                  */
+/* --------------------------- */
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+@keyframes float {
+    to { transform: translateY(-110vh); }
+}
+
+/* --------------------------- */
+/* RESPONSIVE                  */
+/* --------------------------- */
+@media (max-width: 768px) {
+    header.hero h1 {
+        font-size: 2rem;
+    }
+    header.hero h2 {
+        font-size: 1.2rem;
+    }
+    .cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .gallery-grid img {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+    .wall input, .wall textarea {
+        width: 95%;
+    }
+    button, .celebrate-btn {
+        width: 90%;
+        padding: 12px;
+    }
+}
