@@ -3,6 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Love Wall</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, blue, pink, purple, maroon);
+  color: white;
+  text-align: center;
+}
+
+header {
+  padding: 30px 20px;
+  background: rgba(0,0,0,0.4);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  color: black;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: linear-gradient(90deg, red, pink, purple);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#messages {
+  margin-top: 30px;
+}
+
+.msg {
+  background: white;
+  color: black;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  text-align: left;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.msg strong {
+  color: maroon;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💖 School Appreciation Wall 💖</h1>
+  <p>Write a beautiful message and let everyone see it.</p>
+</header>
+
+<div class="container">
+
+<form id="messageForm">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <textarea id="message" placeholder="Write your message here..." required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
+<div id="messages"></div>
+
+</div>
+
+<!-- Firebase Script -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { 
+  getFirestore, 
+  collection, 
+  addDoc, 
+  onSnapshot,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* 🔴 REPLACE THIS WITH YOUR OWN FIREBASE CONFIG */
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const form = document.getElementById("messageForm");
+const messagesDiv = document.getElementById("messages");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const message = document.getElementById("message").value;
+
+  await addDoc(collection(db, "messages"), {
+    name: name,
+    message: message,
+    createdAt: new Date()
+  });
+
+  form.reset();
+});
+
+/* Real-time updates */
+const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+
+onSnapshot(q, (snapshot) => {
+  messagesDiv.innerHTML = "";
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    messagesDiv.innerHTML += `
+      <div class="msg">
+        <strong>${data.name}</strong>
+        <p>${data.message}</p>
+      </div>
+    `;
+  });
+});
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mutuini High School Valentine 2026</title>
 <link rel="stylesheet" href="style.css">
 </head><script type="module">
@@ -152,6 +331,7 @@
 
 </body>
 </html>
+
 
 
 
