@@ -5,7 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mutuini High School Valentine 2026</title>
 <link rel="stylesheet" href="style.css">
-</head>
+</head><script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR-KEY",
+    authDomain: "YOUR-DOMAIN",
+    projectId: "YOUR-PROJECT-ID",
+    storageBucket: "YOUR-BUCKET",
+    messagingSenderId: "YOUR-ID",
+    appId: "YOUR-APP-ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const form = document.getElementById("messageForm");
+  const messagesDiv = document.getElementById("messages");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = form.name.value;
+    const message = form.message.value;
+
+    await addDoc(collection(db, "messages"), {
+      name,
+      message
+    });
+
+    form.reset();
+    loadMessages();
+  });
+
+  async function loadMessages() {
+    messagesDiv.innerHTML = "";
+    const querySnapshot = await getDocs(collection(db, "messages"));
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      messagesDiv.innerHTML += `
+        <div class="msg">
+          <strong>${data.name}</strong>
+          <p>${data.message}</p>
+        </div>
+      `;
+    });
+  }
+
+  loadMessages();
+</script>
+
 <body>
 
 <div class="floating-hearts"></div>
@@ -96,4 +145,5 @@
 
 </body>
 </html>
+
 
