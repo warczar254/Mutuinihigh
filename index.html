@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mutuini High School Valentine Wall</title>
+<title>Mutuini High School Valentine Celebration</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -17,48 +17,59 @@ font-family:'Poppins',sans-serif;
 
 body{
 min-height:100vh;
-background:linear-gradient(-45deg,#0033cc,#ff4da6,#8000ff,#800000,#009966);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
+background:linear-gradient(-45deg,#0a1aff,#ff2e88,#7a00ff,#800000,#009966);
+background-size:500% 500%;
+animation:gradientMove 15s ease infinite;
 color:white;
 overflow-x:hidden;
-text-align:center;
 }
 
-@keyframes bgMove{
+@keyframes gradientMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
 header{
-padding:40px 20px;
+text-align:center;
+padding:50px 20px 20px;
 }
 
 header h1{
-font-size:2rem;
+font-size:2.2rem;
+font-weight:700;
+}
+
+header p{
+margin-top:10px;
+opacity:0.9;
 }
 
 .glass{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:25px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(18px);
+border-radius:25px;
+padding:30px;
 width:95%;
-max-width:850px;
-margin:20px auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
+max-width:900px;
+margin:30px auto;
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
+}
+
+.long-message{
+line-height:1.8;
+font-size:0.95rem;
 }
 
 .templates button{
 margin:5px;
-padding:8px 14px;
+padding:8px 15px;
+border-radius:25px;
 border:none;
-border-radius:20px;
 cursor:pointer;
 background:white;
 color:#800000;
-font-size:0.8rem;
+font-weight:500;
 transition:0.3s;
 }
 
@@ -68,43 +79,45 @@ transform:scale(1.1);
 
 input,textarea{
 width:100%;
-padding:12px;
-margin-top:12px;
-border-radius:12px;
+padding:14px;
+margin-top:15px;
+border-radius:15px;
 border:none;
 outline:none;
 font-size:1rem;
 }
 
-button.submitBtn{
+textarea{
+min-height:120px;
+}
+
+.submitBtn{
 margin-top:15px;
-padding:12px;
+padding:14px;
 width:100%;
+border-radius:15px;
 border:none;
-border-radius:12px;
-font-weight:600;
-cursor:pointer;
 background:linear-gradient(90deg,#ff0055,#ff66cc,#6600ff);
 color:white;
+font-weight:600;
+cursor:pointer;
 transition:0.3s;
 }
 
-button.submitBtn:hover{
+.submitBtn:hover{
 transform:scale(1.05);
 }
 
-/* Message Card */
 .msg{
 background:white;
 color:#333;
 padding:20px;
-border-radius:15px;
+border-radius:20px;
 margin:20px auto;
 width:95%;
-max-width:850px;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+max-width:900px;
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
 animation:fadeUp 0.6s ease;
-text-align:left;
 }
 
 .msg strong{
@@ -113,19 +126,19 @@ font-size:1rem;
 }
 
 .msg p{
-margin-top:8px;
-line-height:1.6;
+margin-top:10px;
+line-height:1.7;
 font-size:0.95rem;
 }
 
 .likeBtn{
-margin-top:10px;
-padding:6px 12px;
-border:none;
+margin-top:12px;
+padding:8px 15px;
 border-radius:20px;
-cursor:pointer;
-background:#ff4da6;
+border:none;
+background:#ff2e88;
 color:white;
+cursor:pointer;
 transition:0.3s;
 }
 
@@ -133,29 +146,24 @@ transition:0.3s;
 transform:scale(1.15);
 }
 
+.counter{
+text-align:center;
+margin-top:15px;
+font-size:0.9rem;
+opacity:0.9;
+}
+
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* 3D Reaction */
-.reaction3D{
-position:fixed;
-font-size:28px;
-animation:explode 1s ease forwards;
-}
-
-@keyframes explode{
-0%{transform:scale(1) rotate(0deg);opacity:1;}
-100%{transform:scale(2.5) rotate(360deg) translateY(-80px);opacity:0;}
-}
-
-/* Flying hearts */
+/* Floating hearts */
 .heart{
 position:fixed;
 bottom:-20px;
-font-size:20px;
-animation:floatUp 6s linear infinite;
+font-size:22px;
+animation:floatUp 7s linear infinite;
 }
 
 @keyframes floatUp{
@@ -163,12 +171,12 @@ animation:floatUp 6s linear infinite;
 100%{transform:translateY(-110vh);}
 }
 
-/* Flowers */
-.flower{
+/* Roses falling */
+.rose{
 position:fixed;
 top:-20px;
-font-size:18px;
-animation:fall 10s linear infinite;
+font-size:20px;
+animation:fall 12s linear infinite;
 }
 
 @keyframes fall{
@@ -176,9 +184,21 @@ animation:fall 10s linear infinite;
 100%{transform:translateY(110vh);}
 }
 
+/* 3D burst */
+.burst{
+position:fixed;
+font-size:30px;
+animation:explode 1.2s ease forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1) rotate(0deg);opacity:1;}
+100%{transform:scale(3) rotate(360deg) translateY(-80px);opacity:0;}
+}
+
 @media(max-width:600px){
-header h1{font-size:1.4rem;}
-.msg p{font-size:0.9rem;}
+header h1{font-size:1.5rem;}
+.long-message{font-size:0.9rem;}
 }
 </style>
 </head>
@@ -186,25 +206,50 @@ header h1{font-size:1.4rem;}
 <body>
 
 <header>
-<h1>🌹 Mutuini High School Valentine Appreciation Wall 🌹</h1>
-<p>Share love, unity and appreciation this Valentine season.</p>
+<h1>🌹 Mutuini High School Valentine Celebration 🌹</h1>
+<p>A celebration of leadership, dedication, unity and love.</p>
 </header>
+
+<div class="glass long-message">
+
+<h3>🌹 A Special Tribute 🌹</h3>
+
+<p><strong>To Our Principal:</strong><br><br>
+On this Valentine’s season, we honor your remarkable leadership, your unwavering strength, and your vision that continuously shapes Mutuini High School into a center of excellence. Your wisdom guides us, your discipline molds us, and your compassion reassures us. You lead not just with authority, but with heart. You carry the dreams of students, the responsibilities of teachers, and the future of this institution with grace and determination. Today, we celebrate you not only as a leader but as a pillar of inspiration whose dedication lights the path for generations to come. May this season remind you how deeply valued, respected, and appreciated you truly are.
+<br><br>
+
+<strong>To Our Teachers:</strong><br>
+Your patience, passion and commitment transform lessons into life-changing moments. You nurture minds, inspire ambition and shape our tomorrow.
+<br><br>
+
+<strong>To Our Non-Teaching Staff:</strong><br>
+Your dedication keeps the foundation strong. Your quiet service and daily effort make our school environment safe and welcoming.
+<br><br>
+
+<strong>To Our Students:</strong><br>
+You are the vibrant spirit of Mutuini High School. Continue to grow, support one another, and rise toward excellence together.
+</p>
+
+</div>
 
 <div class="glass">
 
-<h3>Quick Message Templates</h3>
+<h3>Send Your Valentine Message 💌</h3>
+
 <div class="templates">
-<button onclick="fillTemplate(1)">To Principal</button>
-<button onclick="fillTemplate(2)">To Teachers</button>
-<button onclick="fillTemplate(3)">To Students</button>
-<button onclick="fillTemplate(4)">To Staff</button>
+<button onclick="fillTemplate('principal')">Principal</button>
+<button onclick="fillTemplate('teacher')">Teacher</button>
+<button onclick="fillTemplate('student')">Student</button>
+<button onclick="fillTemplate('staff')">Staff</button>
 </div>
 
 <form id="messageForm">
 <input type="text" id="name" placeholder="Your Name" required>
-<textarea id="message" placeholder="Write your Valentine message..." required></textarea>
-<button type="submit" class="submitBtn">Send Love 💌</button>
+<textarea id="message" placeholder="Write your beautiful message..." required></textarea>
+<button type="submit" class="submitBtn">Send Love 💖</button>
 </form>
+
+<div class="counter" id="messageCounter">Messages Shared: 0</div>
 
 </div>
 
@@ -217,7 +262,7 @@ import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, upda
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 /* Replace with your config */
-const firebaseConfig = {
+const firebaseConfig={
 apiKey:"YOUR_API_KEY",
 authDomain:"YOUR_PROJECT.firebaseapp.com",
 projectId:"YOUR_PROJECT_ID",
@@ -231,28 +276,29 @@ const db=getFirestore(app);
 
 const form=document.getElementById("messageForm");
 const messagesDiv=document.getElementById("messages");
+const counter=document.getElementById("messageCounter");
 
 form.addEventListener("submit",async(e)=>{
 e.preventDefault();
-const name=document.getElementById("name").value.trim();
-const message=document.getElementById("message").value.trim();
+const name=name.value;
+const message=document.getElementById("message").value;
 
-if(name && message){
 await addDoc(collection(db,"messages"),{
 name,
 message,
 likes:0,
 createdAt:new Date()
 });
+
 form.reset();
-reaction3D();
-}
+burst();
 });
 
 const q=query(collection(db,"messages"),orderBy("createdAt","desc"));
 
 onSnapshot(q,(snapshot)=>{
 messagesDiv.innerHTML="";
+counter.innerText="Messages Shared: "+snapshot.size;
 snapshot.forEach(docSnap=>{
 const data=docSnap.data();
 messagesDiv.innerHTML+=`
@@ -270,58 +316,54 @@ messagesDiv.innerHTML+=`
 window.likeMsg=async function(id){
 const ref=doc(db,"messages",id);
 await updateDoc(ref,{likes:increment(1)});
-reaction3D();
+burst();
 };
 
-/* Templates */
 window.fillTemplate=function(type){
 const msg=document.getElementById("message");
-if(type===1){
-msg.value="To our Principal, your leadership, dedication and wisdom continue to guide Mutuini High School toward excellence. We deeply appreciate your strength and commitment.";
+if(type==="principal"){
+msg.value="To our Principal, your exceptional leadership, unwavering commitment and inspiring guidance continue to shape Mutuini High School into a beacon of excellence. We deeply appreciate your strength, vision and dedication.";
 }
-if(type===2){
-msg.value="To our Teachers, thank you for shaping our future with patience, knowledge and inspiration. Your guidance means everything.";
+if(type==="teacher"){
+msg.value="To our wonderful teachers, thank you for your patience, knowledge and the powerful impact you make every single day.";
 }
-if(type===3){
-msg.value="To my fellow students, may we continue supporting one another, building friendships and growing together in unity and love.";
+if(type==="student"){
+msg.value="To my fellow students, may we continue building unity, friendship and excellence together.";
 }
-if(type===4){
-msg.value="To our hardworking staff, your dedication keeps our school running smoothly. We appreciate your effort and silent strength.";
+if(type==="staff"){
+msg.value="To our dedicated staff members, your effort and commitment keep our school thriving.";
 }
-reaction3D();
+burst();
 };
 
-/* 3D reaction */
-function reaction3D(){
-for(let i=0;i<5;i++){
-const r=document.createElement("div");
-r.className="reaction3D";
-r.style.left=Math.random()*100+"vw";
-r.style.top=Math.random()*80+"vh";
-r.innerHTML=["💖","💐","🌹","❤️"][Math.floor(Math.random()*4)];
-document.body.appendChild(r);
-setTimeout(()=>r.remove(),1000);
+function burst(){
+for(let i=0;i<6;i++){
+const b=document.createElement("div");
+b.className="burst";
+b.style.left=Math.random()*100+"vw";
+b.style.top=Math.random()*80+"vh";
+b.innerHTML=["💖","🌹","💐","❤️"][Math.floor(Math.random()*4)];
+document.body.appendChild(b);
+setTimeout(()=>b.remove(),1200);
 }
 }
 
-/* Flying hearts */
 setInterval(()=>{
 const heart=document.createElement("div");
 heart.className="heart";
 heart.style.left=Math.random()*100+"vw";
 heart.innerHTML="💖";
 document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+setTimeout(()=>heart.remove(),7000);
 },1000);
 
-/* Falling flowers */
 setInterval(()=>{
-const flower=document.createElement("div");
-flower.className="flower";
-flower.style.left=Math.random()*100+"vw";
-flower.innerHTML="🌸";
-document.body.appendChild(flower);
-setTimeout(()=>flower.remove(),10000);
+const rose=document.createElement("div");
+rose.className="rose";
+rose.style.left=Math.random()*100+"vw";
+rose.innerHTML="🌹";
+document.body.appendChild(rose);
+setTimeout(()=>rose.remove(),12000);
 },2000);
 
 </script>
