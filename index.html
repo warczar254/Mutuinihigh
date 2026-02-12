@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mutuini High School Valentine's Celebration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<header class="hero">
+    <img src="logo.png" class="logo">
+    <h1>💖 Valentine's Celebration 2026 💖</h1>
+    <h2>Mutuini High School Family</h2>
+    <div id="countdown"></div>
+    <button onclick="scrollToMessage()">Enter Celebration</button>
+</header>
+
+<section class="message" id="mainMessage">
+    <h2 id="typewriter"></h2>
+</section>
+
+<section class="appreciation">
+    <h2>Choose Who To Appreciate</h2>
+    <button onclick="showAppreciation('students')">Students</button>
+    <button onclick="showAppreciation('teachers')">Teachers</button>
+    <button onclick="showAppreciation('staff')">Non-Teaching Staff</button>
+    <p id="appreciationText"></p>
+</section>
+
+<section class="interaction">
+    <h2>Spread Kindness</h2>
+    <button onclick="generateCompliment()">Get a Kind Message</button>
+    <p id="compliment"></p>
+    <button onclick="launchConfetti()">Celebrate 🎉</button>
+</section>
+
+<section class="gallery">
+    <h2>School Memories</h2>
+    <div class="gallery-grid">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+</section>
+
+<section class="wall">
+    <h2>Leave a Kind Message</h2>
+    <input type="text" id="name" placeholder="Your Name">
+    <textarea id="note" placeholder="Write something kind..."></textarea>
+    <button onclick="addMessage()">Post Message</button>
+    <div id="messages"></div>
+</section>
+
+<footer>
+    <p>Mutuini High School — Built on Unity & Excellence</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
