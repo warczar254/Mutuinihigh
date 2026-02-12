@@ -7,23 +7,31 @@
 </head>
 <body>
 
-<div class="floating-hearts"></div>
+<div class="particle-bg"></div>
 
 <header class="hero">
     <img src="logo.png" class="logo" alt="Mutuini Logo">
     <h1 id="typewriter"></h1>
-    <h2>From All of Us at Mutuini High School</h2>
+    <h2>From All of Us at Mutuini High School 💖</h2>
     <button class="celebrate-btn" onclick="launchConfetti()">Celebrate! 🎉</button>
 </header>
 
 <section class="appreciation">
-    <h2>Show Some Love 💖</h2>
+    <h2>Show Some Love</h2>
     <div class="cards">
-        <div class="card" onclick="showAppreciation('students')">Students</div>
-        <div class="card" onclick="showAppreciation('teachers')">Teachers</div>
-        <div class="card" onclick="showAppreciation('staff')">Non-Teaching Staff</div>
+        <div class="card" onclick="showAppreciation('students')">
+            Students
+            <div class="card-inner"><div class="card-front">Students 💌</div><div class="card-back" id="studentsMsg"></div></div>
+        </div>
+        <div class="card" onclick="showAppreciation('teachers')">
+            Teachers
+            <div class="card-inner"><div class="card-front">Teachers 💐</div><div class="card-back" id="teachersMsg"></div></div>
+        </div>
+        <div class="card" onclick="showAppreciation('staff')">
+            Non-Teaching Staff
+            <div class="card-inner"><div class="card-front">Staff 🌸</div><div class="card-back" id="staffMsg"></div></div>
+        </div>
     </div>
-    <div id="appreciationText"></div>
 </section>
 
 <section class="compliment">
