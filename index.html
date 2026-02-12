@@ -1,70 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mutuini High School Valentine 2026</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutuini High School Valentine 2026</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="particle-bg"></div>
+<div class="floating-hearts"></div>
 
 <header class="hero">
-    <img src="logo.png" class="logo" alt="Mutuini Logo">
     <h1 id="typewriter"></h1>
-    <h2>From All of Us at Mutuini High School 💖</h2>
-    <button class="celebrate-btn" onclick="launchConfetti()">Celebrate! 🎉</button>
+    <p>Celebrating Unity • Respect • Love 💖</p>
+    <button class="primary-btn" onclick="launchHearts()">Celebrate Love</button>
 </header>
 
-<section class="appreciation">
-    <h2>Show Some Love</h2>
-    <div class="cards">
-        <div class="card" onclick="showAppreciation('students')">
-            Students
-            <div class="card-inner"><div class="card-front">Students 💌</div><div class="card-back" id="studentsMsg"></div></div>
-        </div>
-        <div class="card" onclick="showAppreciation('teachers')">
-            Teachers
-            <div class="card-inner"><div class="card-front">Teachers 💐</div><div class="card-back" id="teachersMsg"></div></div>
-        </div>
-        <div class="card" onclick="showAppreciation('staff')">
-            Non-Teaching Staff
-            <div class="card-inner"><div class="card-front">Staff 🌸</div><div class="card-back" id="staffMsg"></div></div>
-        </div>
+<section class="principal">
+    <h2>🌟 A Special Tribute to Our Principal 🌟</h2>
+    <div class="principal-card">
+        <p>
+        Dear Principal,
+
+        Your leadership is the foundation upon which Mutuini High School stands strong.
+        Your wisdom shapes futures, your discipline builds character, and your compassion
+        inspires confidence. Through your vision, this school continues to grow in excellence,
+        unity, and purpose.
+
+        Thank you for your dedication, resilience, and unwavering commitment.
+        Today we celebrate not only Valentine’s Day — but the powerful leadership
+        that guides us forward every single day.
+
+        With respect and appreciation,
+        The Mutuini High School Community ❤️
+        </p>
     </div>
+</section>
+
+<section class="appreciation">
+    <h2>💌 Appreciation Messages</h2>
+
+    <div class="glass-card" onclick="toggle(this)">
+        <h3>Students 💕</h3>
+        <p class="hidden">
+        You are the heartbeat of this school. Your dreams, your determination,
+        your energy, and your ambition make Mutuini proud.
+        Keep believing in your greatness — you are capable of amazing things.
+        </p>
+    </div>
+
+    <div class="glass-card" onclick="toggle(this)">
+        <h3>Teachers 🌹</h3>
+        <p class="hidden">
+        Your patience builds confidence. Your guidance creates leaders.
+        Your dedication shapes tomorrow. Thank you for investing your time,
+        wisdom, and heart into every learner.
+        </p>
+    </div>
+
+    <div class="glass-card" onclick="toggle(this)">
+        <h3>Non-Teaching Staff 🌸</h3>
+        <p class="hidden">
+        Your hard work keeps everything running smoothly.
+        From administration to support services,
+        your commitment ensures excellence.
+        You are valued more than words can express.
+        </p>
+    </div>
+
 </section>
 
 <section class="compliment">
-    <h2>Sweet Messages for Everyone</h2>
-    <button onclick="generateCompliment()">Get a Sweet Message 💌</button>
-    <p id="compliment"></p>
-</section>
-
-<section class="gallery">
-    <h2>School Memories 📸</h2>
-    <div class="gallery-grid">
-        <img src="photo1.jpg" alt="Memory 1">
-        <img src="photo2.jpg" alt="Memory 2">
-        <img src="photo3.jpg" alt="Memory 3">
-    </div>
+    <h2>Tap for a Sweet Message 💖</h2>
+    <button class="primary-btn" onclick="generate()">Get Message</button>
+    <p id="messageDisplay"></p>
 </section>
 
 <section class="wall">
-    <h2>Leave a Kind Message 📝</h2>
+    <h2>Leave a Kind Note 📝</h2>
     <input type="text" id="name" placeholder="Your Name">
-    <textarea id="note" placeholder="Write something sweet..."></textarea>
-    <button onclick="addMessage()">Post Message 💖</button>
-    <div id="messages"></div>
+    <textarea id="note" placeholder="Write something kind..."></textarea>
+    <button class="primary-btn" onclick="postNote()">Post</button>
+    <div id="notes"></div>
 </section>
 
 <footer>
-    <p>Mutuini High School — Unity, Respect, and Love ❤️</p>
-    <button onclick="document.getElementById('bgMusic').play()">Play Music 🎵</button>
+    Mutuini High School — Valentine 2026 ❤️
 </footer>
-
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
 
 <script src="script.js"></script>
 </body>
