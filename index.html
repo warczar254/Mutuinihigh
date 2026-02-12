@@ -262,14 +262,23 @@ import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, upda
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 /* Replace with your config */
-const firebaseConfig={
-apiKey:"YOUR_API_KEY",
-authDomain:"YOUR_PROJECT.firebaseapp.com",
-projectId:"YOUR_PROJECT_ID",
-storageBucket:"YOUR_PROJECT.appspot.com",
-messagingSenderId:"YOUR_ID",
-appId:"YOUR_APP_ID"
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBhU6IxXpSSkOAvpy4qWqZW_3yOHEhbBuU",
+  authDomain: "mutuini-valentines-web-app.firebaseapp.com",
+  projectId: "mutuini-valentines-web-app",
+  storageBucket: "mutuini-valentines-web-app.firebasestorage.app",
+  messagingSenderId: "673231939960",
+  appId: "1:673231939960:web:d8578da606e917dd95008d"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
@@ -370,3 +379,4 @@ setTimeout(()=>rose.remove(),12000);
 
 </body>
 </html>
+
